@@ -1,0 +1,29 @@
+# items
+item.test_item.name=License - Testing
+item.heavy_machinery.name=License - §l§2Heavy Machinery§r
+item.complex_machinery.name=License - §l§3Complex Machinery§r
+item.oil_processing.name=License - §l§4Oil Processing§r
+item.mining.name=License - §l§5Mining§r
+item.agriculture.name=License - §l§6Agriculture§r
+item.forestry.name=License - §l§9Forestry§r
+
+# Creative Tab
+itemGroup.customtab=TGA - Licenses
+
+# fluids
+fluid.test_fluid=test fluid
+
+# blocks
+tile.resource_limestone.name=Random block
+
+# CONFIG
+config.stageviewerconfig.title=TGA Licenses Config
+licenses.config.stageguititle=Licenses Gui Title
+licenses.config.nostagemessage=No Licenses
+licenses.config.stagevalues=Licenses Config Values
+licenses.config.stagestaby=Licenses Tab Y offset
+licenses.config.stageicon=Icon Indexes
+
+# TAB NAMES
+licenses.tab.inventory=Inventory
+licenses.tab.stages=Licenses
