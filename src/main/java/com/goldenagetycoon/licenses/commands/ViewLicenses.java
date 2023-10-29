@@ -11,7 +11,6 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 
 import java.util.Collection;
-import java.util.Iterator;
 
 
 public class ViewLicenses extends CommandBase {
@@ -70,7 +69,9 @@ public class ViewLicenses extends CommandBase {
                        licenseString += "\u00a76Agriculture\u00a7r ";
                 }else if(str == "forestry"){
                      licenseString += "\u00a79Forestry\u00a7r ";
-                }
+                }else if(str == "culinary"){
+                    licenseString += "\u00a7dculinary\u00a7r ";
+               }
             }
 
             return licenseString;

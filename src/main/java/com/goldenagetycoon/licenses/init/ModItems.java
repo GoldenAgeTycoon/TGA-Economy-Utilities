@@ -16,4 +16,5 @@ public class ModItems {
     public static final License MINING = new License("mining" );
     public static final License AGRICULTURE = new License("agriculture" );
     public static final License FORESTRY = new License("forestry" );
+    public static final License CULINARY = new License("culinary");
 }

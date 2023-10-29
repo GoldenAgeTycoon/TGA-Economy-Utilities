@@ -1,14 +1,14 @@
 # items
-item.test_item.name=License - Testing
+item.example_license.name=License - Testing
 item.heavy_machinery.name=License - §l§2Heavy Machinery§r
 item.complex_machinery.name=License - §l§3Complex Machinery§r
 item.oil_processing.name=License - §l§4Oil Processing§r
 item.mining.name=License - §l§5Mining§r
 item.agriculture.name=License - §l§6Agriculture§r
 item.forestry.name=License - §l§9Forestry§r
-
+item.culinary.name=License = §l§Culinary§r
 # Creative Tab
-itemGroup.customtab=TGA - Licenses
+itemGroup.licensesTab=TGA - Licenses
 
 # fluids
 fluid.test_fluid=test fluid

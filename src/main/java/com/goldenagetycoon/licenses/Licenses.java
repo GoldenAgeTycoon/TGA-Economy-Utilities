@@ -31,7 +31,7 @@ public class Licenses
 
     static { FluidRegistry.enableUniversalBucket(); }
 
-    public static final TabMenu tab = new TabMenu("customtab");
+    public static final TabMenu tab = new TabMenu("licensesTab");
 
     @Mod.EventHandler
     public static void PreInit(FMLPreInitializationEvent event)

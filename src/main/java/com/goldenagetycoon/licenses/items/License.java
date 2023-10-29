@@ -43,6 +43,11 @@ public class License extends ItemSimpleFoiled implements IHasModel
             Lore.add("\u00a7rThis is a \u00a7lPRIMARY\u00a7r license and will");
             Lore.add("\u00a7rcount towards your license limit");
         }
+        if (ModItems.CULINARY.equals(this)) {
+            super.addInformation(stack, worldIn, Lore, ITooltipFlag.TooltipFlags.ADVANCED);
+            Lore.add("\u00a7rThis is a \u00a7lPRIMARY\u00a7r license and will");
+            Lore.add("\u00a7rcount towards your license limit");
+        }
         if (ModItems.COMPLEX_MACHINERY.equals(this)) {
             super.addInformation(stack, worldIn, Lore, ITooltipFlag.TooltipFlags.ADVANCED);
             Lore.add("\u00a7rThis is a \u00a7lSECONDARY\u00a7r license and will");
@@ -89,89 +94,111 @@ public class License extends ItemSimpleFoiled implements IHasModel
 
          List<String> PrimaryLicenses = new ArrayList<>(Arrays.asList("heavy_machinery", "oil_processing", "mining", "agriculture", "forestry"));
 
-         Collection licenses = data.getStages();
+         Collection<String> licenses = data.getStages();
          Boolean max_licenses = functions.listCheck(PrimaryLicenses,  licenses);
 
 
          if (ModItems.HEAVY_MACHINERY.equals(this)) {
              if(max_licenses) {
-                 if(!world.isRemote)    playerIn.sendMessage(new TextComponentString("You are at your max license count, you cannot redeem any more!"));
+                 if(!world.isRemote)    playerIn.sendStatusMessage(new TextComponentString("You are at your max license count, you cannot redeem any more!"), true);
                  return new ActionResult<>(EnumActionResult.FAIL, item);
              }
              if(!data.getStages().contains("heavy_machinery")){
                  playerIn.setHeldItem(handIn, ItemStack.EMPTY);
                  GameStageHelper.addStage(playerIn, "heavy_machinery");
-                if(!world.isRemote) playerIn.sendMessage(new TextComponentString("You now have the \u00a7l\u00a72Heavy Machinery\u00a7r license!"));
+                    GameStageHelper.syncPlayer(playerIn);
+                if(!world.isRemote) playerIn.sendStatusMessage(new TextComponentString("You now have the \u00a7l\u00a72Heavy Machinery\u00a7r license!"), true);
                  return new ActionResult<>(EnumActionResult.SUCCESS, item);
              }
-             if(!world.isRemote)     playerIn.sendMessage(new TextComponentString("You already have this license!"));
+             if(!world.isRemote)     playerIn.sendStatusMessage(new TextComponentString("You already have this license!"), true);
              return new ActionResult<>(EnumActionResult.FAIL, item);
          }
          if (ModItems.COMPLEX_MACHINERY.equals(this)) {
              if(!data.getStages().contains("complex_machinery")){
                  playerIn.setHeldItem(handIn, ItemStack.EMPTY);
                  GameStageHelper.addStage(playerIn, "complex_machinery");
-                 if(!world.isRemote)  playerIn.sendMessage(new TextComponentString("You now have the \u00a7l\u00a73Complex Machinery\u00a7r license!"));
+                    GameStageHelper.syncPlayer(playerIn);
+                 if(!world.isRemote)  playerIn.sendStatusMessage(new TextComponentString("You now have the \u00a7l\u00a73Complex Machinery\u00a7r license!"), true);
                  return new ActionResult<>(EnumActionResult.SUCCESS, item);
              }
-             if(!world.isRemote)     playerIn.sendMessage(new TextComponentString("You already have this license!"));
+             if(!world.isRemote)     playerIn.sendStatusMessage(new TextComponentString("You already have this license!"), true);
              return new ActionResult<>(EnumActionResult.FAIL, item);
          }
          if (ModItems.OIL_PROCESSING.equals(this)) {
              if(max_licenses) {
-                 if(!world.isRemote)     playerIn.sendMessage(new TextComponentString("You are at your max license count, you cannot redeem any more!"));
+                 if(!world.isRemote)     playerIn.sendStatusMessage(new TextComponentString("You are at your max license count, you cannot redeem any more!"), true);
                  return new ActionResult<>(EnumActionResult.FAIL, item);
              }
              if(!data.getStages().contains("oil_processing")){
 
                  playerIn.setHeldItem(handIn, ItemStack.EMPTY);
                  GameStageHelper.addStage(playerIn, "oil_processing");
-                 if(!world.isRemote)     playerIn.sendMessage(new TextComponentString("You now have the \u00a7l\u00a74Oil Processing\u00a7r license!"));
+                    GameStageHelper.syncPlayer(playerIn);
+                 if(!world.isRemote)     playerIn.sendStatusMessage(new TextComponentString("You now have the \u00a7l\u00a74Oil Processing\u00a7r license!"), true);
                  return new ActionResult<>(EnumActionResult.SUCCESS, item);
              }
-             if(!world.isRemote)     playerIn.sendMessage(new TextComponentString("You already have this license!"));
+             if(!world.isRemote)     playerIn.sendStatusMessage(new TextComponentString("You already have this license!"), true);
              return new ActionResult<>(EnumActionResult.FAIL, item);
          }
+        if (ModItems.CULINARY.equals(this)) {
+            if(max_licenses) {
+                if(!world.isRemote)     playerIn.sendStatusMessage(new TextComponentString("You are at your max license count, you cannot redeem any more!"), true);
+                return new ActionResult<>(EnumActionResult.FAIL, item);
+            }
+            if(!data.getStages().contains("culinary")){
+
+                playerIn.setHeldItem(handIn, ItemStack.EMPTY);
+                GameStageHelper.addStage(playerIn, "culinary");
+                GameStageHelper.syncPlayer(playerIn);
+                if(!world.isRemote)     playerIn.sendStatusMessage(new TextComponentString("You now have the \u00a7l\u00a7dCulinary\u00a7r license!"), true);
+                return new ActionResult<>(EnumActionResult.SUCCESS, item);
+            }
+            if(!world.isRemote)     playerIn.sendStatusMessage(new TextComponentString("You already have this license!"), true);
+            return new ActionResult<>(EnumActionResult.FAIL, item);
+        }
          if (ModItems.MINING.equals(this)) {
              if(max_licenses) {
-                 if(!world.isRemote)     playerIn.sendMessage(new TextComponentString("You are at your max license count, you cannot redeem any more!"));
+                 if(!world.isRemote)     playerIn.sendStatusMessage(new TextComponentString("You are at your max license count, you cannot redeem any more!"), true);
                  return new ActionResult<>(EnumActionResult.FAIL, item);
              }
              if(!data.getStages().contains("mining")){
                  playerIn.setHeldItem(handIn, ItemStack.EMPTY);
                  GameStageHelper.addStage(playerIn, "mining");
-                 if(!world.isRemote)     playerIn.sendMessage(new TextComponentString("You now have the \u00a7l\u00a75Mining\u00a7r license!"));
+                    GameStageHelper.syncPlayer(playerIn);
+                 if(!world.isRemote)     playerIn.sendStatusMessage(new TextComponentString("You now have the \u00a7l\u00a75Mining\u00a7r license!"), true);
                  return new ActionResult<>(EnumActionResult.SUCCESS, item);
              }
-             if(!world.isRemote)     playerIn.sendMessage(new TextComponentString("You already have this license!"));
+             if(!world.isRemote)     playerIn.sendStatusMessage(new TextComponentString("You already have this license!"), true);
              return new ActionResult<>(EnumActionResult.FAIL, item);
          }
          if (ModItems.AGRICULTURE.equals(this)) {
              if(max_licenses) {
-                 if(!world.isRemote)     playerIn.sendMessage(new TextComponentString("You are at your max license count, you cannot redeem any more!"));
+                 if(!world.isRemote)     playerIn.sendStatusMessage(new TextComponentString("You are at your max license count, you cannot redeem any more!"), true);
                  return new ActionResult<>(EnumActionResult.FAIL, item);
              }
              if(!data.getStages().contains("agriculture")){
                  playerIn.setHeldItem(handIn, ItemStack.EMPTY);
                  GameStageHelper.addStage(playerIn, "agriculture");
-                 if(!world.isRemote)  playerIn.sendMessage(new TextComponentString("you now have the \u00a7l\u00a76Agriculture\u00a7r license!"));
+                    GameStageHelper.syncPlayer(playerIn);
+                 if(!world.isRemote)  playerIn.sendStatusMessage(new TextComponentString("you now have the \u00a7l\u00a76Agriculture\u00a7r license!"), true);
                  return new ActionResult<>(EnumActionResult.SUCCESS, item);
              }
-             if(!world.isRemote)     playerIn.sendMessage(new TextComponentString("You already have this license!"));
+             if(!world.isRemote)     playerIn.sendStatusMessage(new TextComponentString("You already have this license!"), true);
              return new ActionResult<>(EnumActionResult.FAIL, item);
          }
          if (ModItems.FORESTRY.equals(this)) {
              if(max_licenses) {
-                 if(!world.isRemote)     playerIn.sendMessage(new TextComponentString("You are at your max license count, you cannot redeem any more!"));
+                 if(!world.isRemote)     playerIn.sendStatusMessage(new TextComponentString("You are at your max license count, you cannot redeem any more!"), true);
                  return new ActionResult<>(EnumActionResult.FAIL, item);
              }
              if(!data.getStages().contains("forestry")){
                  playerIn.setHeldItem(handIn, ItemStack.EMPTY);
                  GameStageHelper.addStage(playerIn, "forestry");
-                 if(!world.isRemote)     playerIn.sendMessage(new TextComponentString("You now have the \u00a7l\u00a79Forestry\u00a7r license!"));
+                    GameStageHelper.syncPlayer(playerIn);
+                 if(!world.isRemote)     playerIn.sendStatusMessage(new TextComponentString("You now have the \u00a7l\u00a79Forestry\u00a7r license!"), true);
                  return new ActionResult<>(EnumActionResult.SUCCESS, item);
              }
-             if(!world.isRemote)     playerIn.sendMessage(new TextComponentString("You already have this license!"));
+             if(!world.isRemote)     playerIn.sendStatusMessage(new TextComponentString("You already have this license!"), true);
              return new ActionResult<>(EnumActionResult.FAIL, item);
          }
 

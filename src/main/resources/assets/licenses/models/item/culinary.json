@@ -1,7 +1,7 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "licenses:items/agriculture"
+        "layer0": "licenses:items/culinary"
      },
      
     "display": {
